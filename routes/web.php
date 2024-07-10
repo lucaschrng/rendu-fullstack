@@ -25,4 +25,9 @@ Route::middleware([
 
 Route::name('tracks.')->prefix('tracks')->controller(\App\Http\Controllers\TrackController::class)->group(function (){
     Route::get('/', 'index')->name('index');
+    Route::get('/create', 'create')->name('create');
+    Route::post('/store', 'store')->name('store');
+    Route::get('/{track}/edit', 'edit')->name('edit');
+    Route::put('/{track}', 'update')->name('update');
+    Route::delete('/{track}', 'destroy')->name('destroy');
 });

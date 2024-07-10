@@ -1,15 +1,35 @@
 <template>
     <div>
-        <img :src="image" :alt="`${title} by ${artist} - album cover}`" />
+        <img :src="'storage/' + track.image" :alt="`${track.title} by ${track.artist} - album cover`" />
         <p>
-            {{ title }} &bull; {{ artist }}
+            {{ track.title }} &bull; {{ track.artist }}
         </p>
+        <button @click="handleClick()">
+            Play
+        </button>
+        <Link :href="route('tracks.edit', { track })">
+            Edit
+        </Link>
+        <Link :href="route('tracks.destroy', { track })" method="delete">
+            Delete
+        </Link>
     </div>
 </template>
 
 <script>
+import { Link } from "@inertiajs/vue3";
+
 export default {
     name: "Track",
-    props: ["title", "artist", "image"],
+    components: {
+        Link,
+    },
+    emits: ["played"],
+    props: ["track"],
+    methods: {
+        handleClick() {
+            this.$emit("played", this.track);
+        },
+    },
 };
 </script>
