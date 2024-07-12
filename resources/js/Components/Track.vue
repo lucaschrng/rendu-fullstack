@@ -7,12 +7,14 @@
         <button @click="handleClick()">
             Play
         </button>
-        <Link :href="route('tracks.edit', { track })">
-            Edit
-        </Link>
-        <Link :href="route('tracks.destroy', { track })" method="delete">
-            Delete
-        </Link>
+        <div v-if="$page.props.isAdmin">
+            <Link :href="route('tracks.edit', { track })">
+                Edit
+            </Link>
+            <Link :href="route('tracks.destroy', { track })" method="delete">
+                Delete
+            </Link>
+        </div>
     </div>
 </template>
 

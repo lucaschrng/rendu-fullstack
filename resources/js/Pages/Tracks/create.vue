@@ -66,7 +66,6 @@
             Save
         </button>
     </form>
-    {{ form }}
 </template>
 
 <script>
