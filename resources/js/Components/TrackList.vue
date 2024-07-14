@@ -1,8 +1,16 @@
 <template>
     <div>
-        <input v-model="filter" type="search">
+        <input
+            v-model="filter"
+            type="search"
+            placeholder="Search for a track"
+            class="rounded bg-neutral-100 border-neutral-300"
+        />
 
-        <div>
+        <div
+            class="grid mt-6 gap-2"
+            :style="{gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))'}"
+        >
             <Track v-for="track in filteredTracks" :key="track.uuid" :track="track" @played="play" />
         </div>
     </div>
@@ -35,7 +43,7 @@ export default {
     },
     methods: {
         play(track) {
-            const url = '/storage/' + track.music;
+            const url = track.music;
             if (!this.currentTrack) {
                 this.audio = new Audio(url);
                 this.audio.play();

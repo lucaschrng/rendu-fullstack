@@ -41,8 +41,8 @@ class TrackController extends Controller
             'title' => $request->title,
             'artist' => $request->artist,
             'display' => $request->display,
-            'image' => "storage/" . $imagePath,
-            'music' => "storage/" . $musicPath
+            'image' => "/storage/" . $imagePath,
+            'music' => "/storage/" . $musicPath
         ]);
 
         return redirect()->route('tracks.index');
