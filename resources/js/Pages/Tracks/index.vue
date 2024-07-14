@@ -60,7 +60,7 @@ export default {
     },
     methods: {
         play(track) {
-            const url = "storage/" + track.music;
+            const url = track.music;
 
             if (!this.currentTrack) {
                 this.audio = new Audio(url);

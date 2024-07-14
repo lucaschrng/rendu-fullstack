@@ -31,7 +31,7 @@ class TrackController extends Controller
         $uuid = Str::uuid();
 
         $imageExt = $request->image->extension();
-        $imagePath = $request->image->storeAs('storage/tracks/images', $uuid . '.' . $imageExt);
+        $imagePath = $request->image->storeAs('tracks/images', $uuid . '.' . $imageExt);
 
         $musicExt = $request->music->extension();
         $musicPath = $request->music->storeAs('tracks/musics', $uuid . '.' . $musicExt);
@@ -41,8 +41,8 @@ class TrackController extends Controller
             'title' => $request->title,
             'artist' => $request->artist,
             'display' => $request->display,
-            'image' => $imagePath,
-            'music' => $musicPath
+            'image' => "storage/" . $imagePath,
+            'music' => "storage/" . $musicPath
         ]);
 
         return redirect()->route('tracks.index');
