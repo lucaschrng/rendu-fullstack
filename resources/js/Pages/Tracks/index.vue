@@ -1,26 +1,45 @@
 <template>
-    <div>
-        <h1>Tracks</h1>
-        <input
-            v-model="filter"
-            type="search"
-        />
-        <Track
-            v-for="track in filteredTracks"
-            :key="track.uuid"
-            :track="track"
-            @played="play"
-        />
-    </div>
+    <MusicLayout>
+        <template #title>Tracks</template>
+        <template #action>
+            <Link v-if="$page.props.isAdmin" :href="route('tracks.create')"
+                  class="bg-blue-500 hover:bg-blue-700 text-white font-bold rounded py-2 px-4">
+                Créer une musique
+            </Link>
+        </template>
+        <template #content>
+            <input
+                v-model="filter"
+                type="search"
+                placeholder="Search for a track"
+                class="rounded bg-neutral-100 border-neutral-300"
+            />
+            <div
+                class="grid mt-6 gap-2"
+                :style="{gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))'}"
+            >
+            <Track
+                v-for="track in filteredTracks"
+                :key="track.uuid"
+                :track="track"
+                @played="play"
+            />
+        </div>
+        </template>
+    </MusicLayout>
 </template>
 
 <script>
+import MusicLayout from "@/Layouts/MusicLayout.vue";
 import Track from "@/Components/Track.vue";
+import {Link} from "@inertiajs/vue3";
 
 export default {
     name: "Index",
     components: {
+        MusicLayout,
         Track,
+        Link,
     },
     props: {tracks: Array},
     data() {
