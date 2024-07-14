@@ -17,11 +17,15 @@ class TrackFactory extends Factory
      */
     public function definition(): array
     {
+        $title = $this->faker->sentence(3);
+        $randomHex = dechex(rand(0x000000, 0xFFFFFF));
+        $image = "https://placehold.co/600x600/" . $randomHex . "/jpg?text=" . str_replace(" ", "+", $title);
+
         return [
             'uuid' => Str::uuid(),
-            'title' => $this->faker->sentence(3),
+            'title' => $title,
             'artist' => $this->faker->name(),
-            'image' => 'tracks/images/test.jpg',
+            'image' => $image,
             'music' => 'tracks/musics/test.mp3',
             'display' => $this->faker->boolean(90),
             'play_count' => $this->faker->numberBetween(0,10_000_000)

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <img :src="'storage/' + track.image" :alt="`${track.title} by ${track.artist} - album cover`" />
+        <img :src="track.image" :alt="`${track.title} by ${track.artist} - album cover`" />
         <p>
             {{ track.title }} &bull; {{ track.artist }}
         </p>
