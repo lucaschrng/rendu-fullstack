@@ -8,7 +8,7 @@ Welcome to this music library project! This project is built using Laravel and V
 
 ```bash
 git clone git@github.com:lucaschrng/rendu-fullstack.git
-cd music-library
+cd rendu-fullstack
 ```
 
 ### Install dependencies:
