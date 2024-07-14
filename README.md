@@ -7,7 +7,7 @@ Welcome to this music library project! This project is built using Laravel and V
 ### Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/music-library.git
+git clone git@github.com:lucaschrng/rendu-fullstack.git
 cd music-library
 ```
 
